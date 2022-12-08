@@ -19,6 +19,8 @@ jobs:
 
       - name: Install dependencies and build
         run: npm install && npm run build
+        env:
+          VITE_OPEN_WEATHER_API_KEY: ${{ secrets.VITE_OPEN_WEATHER_API_KEY }}
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.1
