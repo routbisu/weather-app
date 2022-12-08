@@ -5,7 +5,8 @@ import styled from 'styled-components'
 const TileWrapper = styled.div`
   background: ${({ theme }) => theme.colors.backgroundTile};
   padding: ${({ theme }) => theme.space[4]};
-  border-left: 4px solid ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-left: 5px solid ${({ theme }) => theme.colors.primary};
   border-radius: ${({ theme }) => theme.size[1]};
   position: relative;
 `
@@ -17,7 +18,7 @@ const ParameterName = styled.div`
 `
 
 const ParameterValue = styled.div`
-  font-size: ${({ theme }) => theme.fontSize[5]};
+  font-size: ${({ theme }) => theme.fontSize[4]};
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary};
   text-align: right;
@@ -26,8 +27,8 @@ const ParameterValue = styled.div`
 
 const TileIcon = styled.img`
   position: absolute;
-  left: 0;
-  bottom: -${({ theme }) => theme.space[3]};
+  right: 0;
+  top: 0;
 `
 
 type TileProps = {

@@ -15,9 +15,10 @@ const MessageWrapper = styled.div<MessageProps>`
       type === MessageType.Error ? 'errorBackground' : 'background'
     ]};
   border-radius: ${({ theme }) => theme.size[1]};
-  border-left: 4px solid;
+  border-left: 5px solid;
   border-color: ${({ theme, type }) =>
     theme.colors[type === MessageType.Error ? 'error' : 'primary']};
+  line-height: 1.4;
 `
 
 const Message: React.FC<MessageProps> = ({ children, ...rest }) => {
