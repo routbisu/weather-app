@@ -18,6 +18,8 @@ export const transformWeatherDetails = (
       main,
       sys,
       name,
+      visibility,
+      wind,
     } = openWeatherApiResponse
 
     const weatherDetails: WeatherDetails = {
@@ -61,6 +63,38 @@ export const transformWeatherDetails = (
       weatherDetails.parameters.push({
         name: 'Sunset',
         value: moment.unix(sys?.sunset).format('h:mm A'),
+      })
+    }
+
+    // Add feels like
+    if (main?.feels_like) {
+      weatherDetails.parameters.push({
+        name: 'Feels like',
+        value: `${main.feels_like} °C`,
+      })
+    }
+
+    // Add humidity
+    if (main?.humidity) {
+      weatherDetails.parameters.push({
+        name: 'Humidity',
+        value: `${main.humidity} %`,
+      })
+    }
+
+    // Add visibility
+    if (visibility) {
+      weatherDetails.parameters.push({
+        name: 'Visibility',
+        value: `${visibility / 1000} km`,
+      })
+    }
+
+    // Add wind speed
+    if (wind?.speed) {
+      weatherDetails.parameters.push({
+        name: 'Wind Speed',
+        value: `${wind.speed} mph`,
       })
     }
 
