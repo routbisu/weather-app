@@ -63,35 +63,37 @@ const weatherApiResponse = {
 
 describe.concurrent('transformWeatherDetails', () => {
   it('transform weather details - null', () => {
-    expect(transformWeatherDetails(null)).toBe(null)
+    expect(transformWeatherDetails(null, 'metric')).toBe(null)
   })
 
   it('transform weather details', () => {
-    expect(transformWeatherDetails(weatherApiResponse)).toStrictEqual({
-      location: 'London',
-      coord: { lat: 51.5085, lon: -0.1257 },
-      parameters: [
-        { name: 'Clouds', value: 'Broken clouds', iconId: '04n' },
-        { name: 'Temperature', value: '2.71 °C' },
-        { name: 'Sunrise', value: '7:51 AM' },
-        { name: 'Sunset', value: '3:52 PM' },
-        {
-          name: 'Feels like',
-          value: '-0.32 °C',
-        },
-        {
-          name: 'Humidity',
-          value: '86 %',
-        },
-        {
-          name: 'Visibility',
-          value: '10 km',
-        },
-        {
-          name: 'Wind Speed',
-          value: '3.09 mph',
-        },
-      ],
-    })
+    expect(transformWeatherDetails(weatherApiResponse, 'metric')).toStrictEqual(
+      {
+        location: 'London',
+        coord: { lat: 51.5085, lon: -0.1257 },
+        parameters: [
+          { name: 'Clouds', value: 'Broken clouds', iconId: '04n' },
+          { name: 'Temperature', value: '2.71 °C' },
+          { name: 'Sunrise', value: '7:51 AM' },
+          { name: 'Sunset', value: '3:52 PM' },
+          {
+            name: 'Feels like',
+            value: '-0.32 °C',
+          },
+          {
+            name: 'Humidity',
+            value: '86 %',
+          },
+          {
+            name: 'Visibility',
+            value: '10 km',
+          },
+          {
+            name: 'Wind Speed',
+            value: '3.09 mph',
+          },
+        ],
+      }
+    )
   })
 })
