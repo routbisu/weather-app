@@ -25,3 +25,6 @@ dist-ssr
 
 # Env variables
 .env
+
+# Coverage
+coverage/

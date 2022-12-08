@@ -15,9 +15,13 @@ const WeatherWrapper = styled.main`
 
 const WeatherTiles = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: ${({ theme }) => theme.space[4]};
   margin-top: ${({ theme }) => theme.space[4]};
+
+  @media screen and (min-width: 376px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 const PageHeading = styled.h1`

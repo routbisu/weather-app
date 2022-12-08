@@ -22,7 +22,7 @@ const ParameterValue = styled.div`
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary};
   text-align: right;
-  margin-top: ${({ theme }) => theme.space[5]};
+  margin-top: ${({ theme }) => theme.space[4]};
 `
 
 const TileIcon = styled.img`
@@ -41,8 +41,8 @@ const Tile: React.FC<TileProps> = ({ paramName, paramValue, iconId }) => {
   return (
     <TileWrapper>
       {iconId ? <TileIcon src={getIconUrl(iconId)} alt={paramName} /> : null}
-      <ParameterName>{paramName}</ParameterName>
-      <ParameterValue>{paramValue}</ParameterValue>
+      <ParameterName data-testid="paramName">{paramName}</ParameterName>
+      <ParameterValue data-testid="paramValue">{paramValue}</ParameterValue>
     </TileWrapper>
   )
 }

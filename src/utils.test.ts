@@ -61,13 +61,11 @@ const weatherApiResponse = {
   cod: 200,
 }
 
-describe('transformWeatherDetails', () => {
+describe.concurrent('transformWeatherDetails', () => {
   it('transform weather details - null', () => {
     expect(transformWeatherDetails(null)).toBe(null)
   })
-})
 
-describe('transformWeatherDetails', () => {
   it('transform weather details', () => {
     expect(transformWeatherDetails(weatherApiResponse)).toStrictEqual({
       location: 'London',
@@ -77,6 +75,22 @@ describe('transformWeatherDetails', () => {
         { name: 'Temperature', value: '2.71 °C' },
         { name: 'Sunrise', value: '7:51 AM' },
         { name: 'Sunset', value: '3:52 PM' },
+        {
+          name: 'Feels like',
+          value: '-0.32 °C',
+        },
+        {
+          name: 'Humidity',
+          value: '86 %',
+        },
+        {
+          name: 'Visibility',
+          value: '10 km',
+        },
+        {
+          name: 'Wind Speed',
+          value: '3.09 mph',
+        },
       ],
     })
   })
