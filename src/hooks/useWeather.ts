@@ -8,7 +8,10 @@ export function useWeather() {
   const [error, setError] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>()
 
-  const fetchWeatherDetails = async (location: string) => {
+  const fetchWeatherDetails = async (
+    location: string,
+    unit: string = 'metric'
+  ) => {
     // Validation for empty location
     if (!location) {
       setError('Please enter a location.')
@@ -20,14 +23,17 @@ export function useWeather() {
     setWeatherDetails(null)
 
     const weatherApiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY
-    const weatherUrl = `${weatherApiBaseUrl}?APPID=${weatherApiKey}&units=metric&q=${location}`
+    const weatherUrl = `${weatherApiBaseUrl}?APPID=${weatherApiKey}&units=${unit}&q=${location}`
 
     try {
       const response = await fetch(weatherUrl)
       const weatherDetails = await response.json()
 
       if (response.status === 200) {
-        const weatherDetailsFormatted = transformWeatherDetails(weatherDetails)
+        const weatherDetailsFormatted = transformWeatherDetails(
+          weatherDetails,
+          unit
+        )
         setWeatherDetails(weatherDetailsFormatted)
       } else if (response.status === 404) {
         // Add a more graceful message compared to the one returned from the API

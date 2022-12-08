@@ -57,7 +57,8 @@ const SubmitButton = styled.button`
 `
 
 // Hidden label for screen readers
-const HiddenLabel = styled.label`
+// TODO: Move it to a central place
+export const HiddenLabel = styled.label`
   height: 1px;
   margin: -1px;
   width: 1px;

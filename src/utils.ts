@@ -9,7 +9,8 @@ export const capitalizeFirstLetter = (input: string) =>
   input.charAt(0).toUpperCase() + input.slice(1)
 
 export const transformWeatherDetails = (
-  openWeatherApiResponse: any
+  openWeatherApiResponse: any,
+  unit: string
 ): WeatherDetails | null => {
   if (openWeatherApiResponse) {
     const {
@@ -46,7 +47,7 @@ export const transformWeatherDetails = (
     if (main?.temp) {
       weatherDetails.parameters.push({
         name: 'Temperature',
-        value: `${main.temp} °C`,
+        value: `${main.temp} °${unit === 'imperial' ? 'F' : 'C'}`,
       })
     }
 
@@ -70,7 +71,7 @@ export const transformWeatherDetails = (
     if (main?.feels_like) {
       weatherDetails.parameters.push({
         name: 'Feels like',
-        value: `${main.feels_like} °C`,
+        value: `${main.feels_like} °${unit === 'imperial' ? 'F' : 'C'}`,
       })
     }
 
@@ -102,4 +103,18 @@ export const transformWeatherDetails = (
   }
 
   return null
+}
+
+export const saveToLocalstorage = (key: string, value: string): void => {
+  if (window?.localStorage) {
+    window.localStorage.setItem(key, value)
+  }
+}
+
+export const getFromLocalstorage = (key: string): string => {
+  if (window?.localStorage) {
+    return window.localStorage.getItem(key) || ''
+  }
+
+  return ''
 }
