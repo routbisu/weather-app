@@ -85,7 +85,7 @@ const Weather = () => {
     setUnit(evt.target.value)
 
     // Save setting to local storage
-    saveToLocalstorage('unit', unit)
+    saveToLocalstorage('unit', evt.target.value)
   }
 
   return (
