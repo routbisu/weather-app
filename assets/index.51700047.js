@@ -921,7 +921,7 @@ T.version="2.29.4";IS(me);T.fn=x;T.min=__;T.max=x_;T.now=C_;T.utc=an;T.unix=Jx;T
     opacity: 0.6;
     margin-right: ${({theme:e})=>e.space[3]};
   }
-`,B4=({name:e})=>tl(V4,{children:[ge(Or,{icon:ES}),e]});function G4(){const[e,t]=Ze.exports.useState(),[n,r]=Ze.exports.useState(""),[i,a]=Ze.exports.useState();return{fetchWeatherDetails:async s=>{if(!s){r("Please enter a location.");return}r(""),a(!0),t(null);const u=`${I4}?APPID=1d3a734daec39beb151d99ef9c4f7e28&units=metric&q=${s}`;try{const f=await fetch(u),d=await f.json();if(f.status===200){const m=F4(d);t(m)}else f.status===404?r("Please enter a valid location."):r(d.message)}catch{r("There was an unexpected error, please try later.")}finally{a(!1)}},weatherDetails:e,error:n,isLoading:i}}const Q4=ht.main`
+`,B4=({name:e})=>tl(V4,{children:[ge(Or,{icon:ES}),e]});function G4(){const[e,t]=Ze.exports.useState(),[n,r]=Ze.exports.useState(""),[i,a]=Ze.exports.useState();return{fetchWeatherDetails:async s=>{if(!s){r("Please enter a location.");return}r(""),a(!0),t(null);const l={BASE_URL:"/weather-app/",MODE:"production",DEV:!1,PROD:!0}.VITE_OPEN_WEATHER_API_KEY,u=`${I4}?APPID=${l}&units=metric&q=${s}`;try{const f=await fetch(u),d=await f.json();if(f.status===200){const m=F4(d);t(m)}else f.status===404?r("Please enter a valid location."):r(d.message)}catch{r("There was an unexpected error, please try later.")}finally{a(!1)}},weatherDetails:e,error:n,isLoading:i}}const Q4=ht.main`
   margin: auto;
   max-width: ${({theme:e})=>e.size[128]};
   padding: ${({theme:e})=>e.space[4]};
